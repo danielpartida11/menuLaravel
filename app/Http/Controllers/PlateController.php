@@ -49,7 +49,12 @@ class PlateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plate = Plate::findOrFail($id);
+        $plate->fill($request->all());
+        $plate->save();
+
+        return $plate;
+
     }
 
     /**
